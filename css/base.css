@@ -1,0 +1,244 @@
+/* Base styles - Reset, global styles, common elements */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Samsung Sans', Arial, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #ffffff;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.hidden {
+    display: none !important;
+}
+
+button {
+    padding: 20px 60px;
+    font-size: 28px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:focus:not(.favorite-star):not(.action-btn):not(.modal-btn):not(.season-btn):not(.view-btn):not(.sort-btn):not(.filter-btn),
+button.focused:not(.favorite-star):not(.action-btn):not(.modal-btn):not(.season-btn):not(.view-btn):not(.sort-btn):not(.filter-btn) {
+    outline: 3px solid #fff;
+    transform: scale(1.05);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00d4ff;
+    border-radius: 4px;
+}
+
+/* Loading */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #0a0a1a;
+    font-size: 28px;
+    z-index: 9000;
+}
+
+#loading-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    display: flex;
+    justify-content: center;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+#loading-backdrop .backdrop-img {
+    width: 720px;
+    height: 1080px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#loading-backdrop.poster-mode {
+    opacity: 0.6;
+}
+
+#loading-backdrop.poster-mode .backdrop-img {
+    display: none;
+}
+
+#loading-backdrop.poster-mode .poster-bg {
+    display: block;
+    width: 1920px;
+    height: 1080px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(20px);
+    transform: scale(1.1);
+}
+
+#loading-backdrop .poster-bg {
+    display: none;
+}
+
+@keyframes kenburns {
+    0% {
+        transform: scale(1.0) translate(0, 0);
+    }
+    100% {
+        transform: scale(1.2) translate(-3%, -2%);
+    }
+}
+
+#loading-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 60px 100px;
+    border-radius: 20px;
+}
+
+#loading .spinner {
+    margin-bottom: 20px;
+}
+
+#loading-status {
+    margin-top: 15px;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #00d4ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Text size: medium */
+body.text-medium .grid-item-info { font-size: 16px; }
+body.text-medium .episode-number,
+body.text-medium .episode-info,
+body.text-medium .cast-character,
+body.text-medium .sort-btn,
+body.text-medium .filter-btn,
+body.text-medium .sd-tag { font-size: 18px; }
+body.text-medium .grid-item-title { font-size: 18px; }
+body.text-medium .cast-name,
+body.text-medium .filter-input,
+body.text-medium .grid-genre { font-size: 20px; }
+body.text-medium .episode-title,
+body.text-medium .genre-tag,
+body.text-medium .season-btn,
+body.text-medium .filmography-year { font-size: 22px; }
+body.text-medium .category-item,
+body.text-medium #details-director,
+body.text-medium #actor-bio { font-size: 24px; }
+body.text-medium #details-cast-title,
+body.text-medium #details-director-title,
+body.text-medium #actor-meta,
+body.text-medium #series-status { font-size: 26px; }
+body.text-medium #details-description,
+body.text-medium #actor-filmography-title,
+body.text-medium .filmography-title { font-size: 28px; }
+body.text-medium #details-meta { font-size: 30px; }
+body.text-medium .settings-label { font-size: 26px; }
+body.text-medium .settings-toggle { font-size: 24px; }
+body.text-medium .settings-desc { font-size: 18px; }
+/* Element scaling: medium */
+body.text-medium #actor-bio { max-height: 180px; }
+body.text-medium .cast-card { width: 140px; }
+body.text-medium .cast-photo { width: 120px; height: 120px; }
+body.text-medium #actor-photo-large { width: 320px; height: 430px; }
+body.text-medium .filmography-item { width: 220px; }
+body.text-medium .filmography-poster { width: 200px; height: 300px; }
+body.text-medium .episode-item { width: 320px; }
+
+/* Text size: large */
+body.text-large .grid-item-info { font-size: 20px; }
+body.text-large .episode-number,
+body.text-large .episode-info,
+body.text-large .cast-character,
+body.text-large .sort-btn,
+body.text-large .filter-btn,
+body.text-large .sd-tag { font-size: 22px; }
+body.text-large .grid-item-title { font-size: 22px; }
+body.text-large .cast-name,
+body.text-large .filter-input,
+body.text-large .grid-genre { font-size: 24px; }
+body.text-large .episode-title,
+body.text-large .genre-tag,
+body.text-large .season-btn,
+body.text-large .filmography-year { font-size: 26px; }
+body.text-large .category-item,
+body.text-large #details-director,
+body.text-large #actor-bio { font-size: 28px; }
+body.text-large #details-cast-title,
+body.text-large #details-director-title,
+body.text-large #actor-meta,
+body.text-large #series-status { font-size: 30px; }
+body.text-large #details-description,
+body.text-large #actor-filmography-title,
+body.text-large .filmography-title { font-size: 32px; }
+body.text-large #details-meta { font-size: 34px; }
+body.text-large .settings-label { font-size: 30px; }
+body.text-large .settings-toggle { font-size: 28px; }
+body.text-large .settings-desc { font-size: 20px; }
+/* Element scaling: large */
+body.text-large #actor-bio { max-height: 210px; }
+body.text-large .cast-card { width: 160px; }
+body.text-large .cast-photo { width: 140px; height: 140px; }
+body.text-large #actor-photo-large { width: 350px; height: 470px; }
+body.text-large .filmography-item { width: 240px; }
+body.text-large .filmography-poster { width: 220px; height: 330px; }
+body.text-large .episode-item { width: 360px; }
